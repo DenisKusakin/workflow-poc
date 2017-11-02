@@ -1,6 +1,8 @@
 package com.cathcart93.sling.groovyworkflow
 
-import com.cathcart93.sling.groovyworkflow.impl.builders.XMLPipelineBuilder
+import com.cathcart93.sling.groovyworkflow.impl.builders.xml.XMLPipelineBuilder
+import com.cathcart93.sling.groovyworkflow.impl.builders.xml.parse
+import org.junit.Assert
 import org.junit.jupiter.api.Test
 
 /**
@@ -8,14 +10,18 @@ import org.junit.jupiter.api.Test
  */
 class XMLBuilderTest {
     @Test
-    internal fun test() {
-        val builder = XMLPipelineBuilder("""
+    internal fun parserTest() {
+        val testXML = """
             <pipeline name="test name">
                 <step type="groovy" script="script1"/>
                 <step type="groovy" script="script2"/>
                 <step type="groovy" script="script3"/>
             </pipeline>
-        """.trimIndent())
-        builder.getPipeline()
+        """.trimIndent()
+        val parsedDTO = parse(testXML)
+        Assert.assertEquals("test name", parsedDTO?.name)
+        val steps = parsedDTO?.steps
+        val step1 = steps!![1]
+        Assert.assertEquals("script2", step1.type)
     }
 }
