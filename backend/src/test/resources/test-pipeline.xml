@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pipeline>
+    <step type="groovy" script="script1"/>
+    <step type="groovy" script="script2"/>
+    <step type="groovy" script="script3"/>
+</pipeline>

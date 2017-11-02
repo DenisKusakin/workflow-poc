@@ -4,6 +4,7 @@ import com.cathcart93.sling.groovyworkflow.api.Pipeline
 import com.cathcart93.sling.groovyworkflow.api.PipelineStepResultStatus
 import com.cathcart93.sling.groovyworkflow.api.StepResult
 import rx.Observable
+import java.lang.Exception
 import java.util.concurrent.Callable
 
 class PipelineImpl(private val steps: Collection<Callable<String>>) : Pipeline {
